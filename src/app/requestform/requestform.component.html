@@ -1,0 +1,50 @@
+<div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Request Form</h2>
+                        <form method="POST" class="register-form" novalidate id="register-form">
+                            <div class="form-group">
+                                <label for="name"></label>
+                                <input type="text" [(ngModel)] ="rqst.name" name="name" id="name" placeholder="Request Name" />
+                            </div> 
+                            <div class="form-group">
+                                <label for="expectedDate"></label>
+                                <input type="text" [(ngModel)] ="rqst.expectedDate" name="expectedDate" id="expectedDate" placeholder="expectedDate" />
+                            </div>
+                            <div class="form-group">
+                                <label for="category"></label>
+                                <input type="text" [(ngModel)] ="rqst.category" name="category" id="category" placeholder="category" />
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity"></label>
+                                <input type="text" [(ngModel)] ="rqst.quantity" name="quantity" id="quantity" placeholder="quantity" />
+                            </div>
+                            <div class="form-group">
+                                <label for="desc"></label>
+                                <input type="text" [(ngModel)] ="rqst.desc" name="desc" id="desc" placeholder="Description" />
+                            </div>
+                            <div class="form-group">
+                                <label for="spName"></label>
+                                <input type="text" [(ngModel)] ="rqst.spName" name="spName" id="spName" placeholder="Service Provider Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="bName"></label>
+                                <input type="text" [(ngModel)] ="rqst.bName"name="bName" id="bName" placeholder="Buyer Name" />
+                            </div>
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" (click)="createRequest()" />
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>

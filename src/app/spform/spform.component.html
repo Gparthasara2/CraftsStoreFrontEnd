@@ -1,0 +1,34 @@
+<div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sp form</h2>
+                    <form method="POST" class="register-form" novalidate id="register-form">
+                        <div class="form-group">
+                            <label for="svcName"></label>
+                            <input type="text" [(ngModel)] ="sp.svcName" name="svcName" id="svcName" placeholder="Your svcName" />
+                        </div> 
+                        <div class="form-group">
+                            <label for="category"></label>
+                            <input type="text" [(ngModel)] ="sp.category" name="category" id="category" placeholder="Your category" />
+                        </div>
+                        <div class="form-group">
+                            <label for="desc"></label>
+                            <input type="text" [(ngModel)] ="sp.desc" name="desc" id="desc" placeholder="Description" />
+                        </div>
+                        
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" (click)="createSPForm()" />
+                        </div>
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+</div>
+<script src="js/main.js"></script>
+<script src="js/index.js"></script>
