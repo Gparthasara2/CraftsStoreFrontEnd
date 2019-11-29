@@ -11,6 +11,7 @@ import { OrderformComponent } from './orderform/orderform.component';
 import { OrderserviceComponent } from './orderservice/orderservice.component';
 import {SigninUBComponent} from './signin-ub/signin-ub.component';
 import { SigninSPComponent} from './signin-sp/signin-sp.component';
+import { RequestServiceUserComponent} from './request-service-user/request-service-user.component'
 
 
 
@@ -19,14 +20,15 @@ const routes: Routes = [
   {path:'',component: WelcomeComponent},
   {path:'signup1',component: Signup1Component},
   {path:'signup2',component:Signup2Component},
-  {path:'services',component:ServicesComponent},
+  {path:'services/:mail',component:ServicesComponent},
   {path:'spform',component:SpformComponent},
-  {path:'requestform',component:RequestformComponent},
+  {path:'requestform/:mail',component:RequestformComponent},
   {path:'requestservice/:mail',component:RequestserviceComponent},
   {path:'orderform',component:OrderformComponent},
   {path:'orderservice',component:OrderserviceComponent},
   {path:'signinUB',component:SigninUBComponent},
-  {path:'signinSP',component:SigninSPComponent}
+  {path:'signinSP',component:SigninSPComponent},
+  {path:'requestForUser/:mail',component:RequestServiceUserComponent}
 
 ];
 

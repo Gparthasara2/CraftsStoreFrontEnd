@@ -8,7 +8,7 @@ import { SignUpService, ServiceProvider} from '../HelperServices/signupService'
 })
 export class Signup1Component implements OnInit {
 
-  sp: ServiceProvider = new ServiceProvider("","","","","","","");
+  sp: ServiceProvider = new ServiceProvider("","","","","","","",[]);
   constructor(private signupservice: SignUpService) { }
 
   ngOnInit() {

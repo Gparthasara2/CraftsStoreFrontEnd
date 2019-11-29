@@ -7,6 +7,8 @@ export class ServiceModel {
         public svcName: string,
         public category: string,
         public desc: string,
+        public spName: string,
+        public bName: string
         
     ) { }
 }
@@ -18,7 +20,7 @@ export class ServiceModel {
 export class SpFormService {
     constructor(private httpClient: HttpClient) { }
 
-    public createSPForm(sp) {
+    public createService(sp) {
         return this.httpClient.post<ServiceModel>("http://localhost:8001/Services", sp);
     }
 
@@ -26,7 +28,7 @@ export class SpFormService {
     //     return this.httpClient.delete<ServiceProvider>("http://localhost:8001/ServiceProviders" )
     // }
 
-    public findSP(name){
+    public findSPByName(name){
         return this.httpClient.get<ServiceModel>("http://localhost:8001/Services/" + name);
     }
 

@@ -17,6 +17,7 @@ import { OrderformComponent } from './orderform/orderform.component';
 import { OrderserviceComponent } from './orderservice/orderservice.component';
 import { SigninSPComponent } from './signin-sp/signin-sp.component';
 import { SigninUBComponent } from './signin-ub/signin-ub.component';
+import { RequestServiceUserComponent } from './request-service-user/request-service-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SigninUBComponent } from './signin-ub/signin-ub.component';
     OrderformComponent,
     OrderserviceComponent,
     SigninSPComponent,
-    SigninUBComponent
+    SigninUBComponent,
+    RequestServiceUserComponent
   ],
   imports: [
     BrowserModule,

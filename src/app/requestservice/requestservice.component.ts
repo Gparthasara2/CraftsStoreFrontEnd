@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RequestModel, RequestService} from '../HelperServices/requestService';
+import { RequestModel, RequestService } from '../HelperServices/requestService';
+import { ActivatedRoute } from '@angular/router';
+import { ServiceProvider, SignUpService } from '../HelperServices/signupService'
 
 @Component({
   selector: 'app-requestservice',
@@ -8,15 +10,40 @@ import {RequestModel, RequestService} from '../HelperServices/requestService';
 })
 export class RequestserviceComponent implements OnInit {
 
-  services: RequestModel[]
-  constructor(private requestservice: RequestService) { }
+  requests: RequestModel[] = [];
+  sp: ServiceProvider;
+  mail: string = ''
+
+  constructor(private requestservice: RequestService, private sService: SignUpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.requestservice.getServices().subscribe(response=>this.handlesuccessfulResponse(response));
+    this.mail = this.route.snapshot.paramMap.get("mail");
+    this.sService.findSPByEmail(this.mail).subscribe(response => this.handlesuccessfulResponse(response));
   }
 
-  handlesuccessfulResponse(response){
-    this.services = response;
+  handlesuccessfulResponse(response) {
+    this.sp = response;
+    console.error('printing sp ');
+    console.log(this.sp);
+
+    this.addRequests();
+  }
+
+  addRequests() {
+
+    this.sp.rqstNames.forEach(element => {
+      this.requestservice.findRequest(element).subscribe(response => this.handlesuccessfulResponseRequest(response));
+    })
+
+  }
+
+  handlesuccessfulResponseRequest(response) {
+    console.log(response)
+    console.log('response');
+    
+    this.requests.push(response);
+    console.log(this.requests);
+
   }
 
 }

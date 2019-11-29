@@ -33,7 +33,11 @@ export class RequestService {
         return this.httpClient.get<RequestModel>("http://localhost:8001/Requests/" + name);
     }
 
-    public getServices(){
+    public getRequests(){
         return this.httpClient.get<RequestModel[]>("http://localhost:8001/Requests");
+    }
+
+    public findRequest(rqstName){
+        return this.httpClient.get<RequestModel>("http://localhost:8001/Requests/rqstName" + "/" +rqstName);
     }
 }

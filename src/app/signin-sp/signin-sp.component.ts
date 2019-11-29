@@ -11,11 +11,11 @@ export class SigninSPComponent implements OnInit {
 
   mail: string = ""
   password: string = ""
-  sp: ServiceProvider = new ServiceProvider("", "", "", "", "", "", "");
-  errorMessage:string = "";
-  isUserError:boolean = false;
-  isPasswordError:boolean = false;
-  passwordmsg:string="";
+  sp: ServiceProvider = new ServiceProvider("", "", "", "", "", "", "", []);
+  errorMessage: string = "";
+  isUserError: boolean = false;
+  isPasswordError: boolean = false;
+  passwordmsg: string = "";
   constructor(private spService: SignUpService, private router: Router) { }
 
   ngOnInit() {
@@ -23,12 +23,13 @@ export class SigninSPComponent implements OnInit {
   }
 
   checkMatch(mail) {
-    
-    this.spService.findSPByEmail(mail).subscribe(response => { 
-      this.handleSuccessfulResponse(response) 
+    this.isUserError = false;
+    this.isPasswordError = false;
+    this.spService.findSPByEmail(mail).subscribe(response => {
+      this.handleSuccessfulResponse(response)
       console.log(response);
-      
-      },
+
+    },
       error => { this.errorMessage = "User is not found in the database"; this.isUserError = true; });
 
   }
@@ -36,16 +37,15 @@ export class SigninSPComponent implements OnInit {
 
   handleSuccessfulResponse(response) {
     // if (response instanceof ServiceProvider) {
-      this.sp = response;
-      console.log(this.sp)
-      this.checkMatchUtil(this.sp)
+    this.sp = response;
+    console.log(this.sp)
+    this.checkMatchUtil(this.sp)
     // }
-    
+
 
   }
 
   checkMatchUtil(sp: ServiceProvider) {
-    
     if (sp.password == this.password) {
       this.router.navigate(['/requestservice', this.mail]);
     }

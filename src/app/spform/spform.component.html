@@ -9,23 +9,27 @@
                     <form method="POST" class="register-form" novalidate id="register-form">
                         <div class="form-group">
                             <label for="svcName"></label>
-                            <input type="text" [(ngModel)] ="sp.svcName" name="svcName" id="svcName" placeholder="Your svcName" />
-                        </div> 
+                            <input type="text" [(ngModel)]="s.svcName" name="svcName" id="svcName" placeholder="Your svcName" />
+                        </div>
                         <div class="form-group">
                             <label for="category"></label>
-                            <input type="text" [(ngModel)] ="sp.category" name="category" id="category" placeholder="Your category" />
+                            <input type="text" [(ngModel)]="s.category" name="category" id="category" placeholder="Your category" />
                         </div>
                         <div class="form-group">
                             <label for="desc"></label>
-                            <input type="text" [(ngModel)] ="sp.desc" name="desc" id="desc" placeholder="Description" />
+                            <input type="text" [(ngModel)]="s.desc" name="desc" id="desc" placeholder="Description" />
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="desc"></label>
+                            <input type="text" [(ngModel)]="s.spName" name="spName" id="spName" placeholder="Service Providers Name" />
+                        </div>
+
                         <div class="form-group form-button">
-                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" (click)="createSPForm()" />
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" (click)="createService()" />
                         </div>
                     </form>
                 </div>
-               
+
             </div>
         </div>
     </section>
