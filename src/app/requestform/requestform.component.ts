@@ -12,23 +12,25 @@ import { UserService, UserBuyer } from '../HelperServices/UserService';
 export class RequestformComponent implements OnInit {
 
   mail: string = "";
+  spName:string="";
   ub: UserBuyer = new UserBuyer("", "", "", "", "", []);
-
+  sp: ServiceProvider = new ServiceProvider("","","","","","","",[],[]);
   rqst: RequestModel = new RequestModel("", "", "", "", "", "");
   reqForUser: RequestModel = new RequestModel("", "", "", "", "", "");
-  sp: ServiceProvider;
   constructor(private requestservice: RequestService, private sService: SignUpService, private uService: UserService, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.mail = this.router.snapshot.paramMap.get("mail");
-    this.uService.findUserByEmail(this.mail).subscribe(response => this.handleFindingUser(response));
+    this.spName = this.router.snapshot.paramMap.get("spName");
+    this.sService.findSPByName(this.spName).subscribe(response=>this.handleSuccessFindingSP(response));
+    this.uService.findUserByEmail(this.mail).subscribe(response => this.handleSuccessFindingUB(response));
   }
 
   createRequest(): void {
 
-
+    
     this.rqst.bName = this.ub.username;
-
+    this.rqst.spName = this.sp.username;
     this.requestservice.createRequest(this.rqst).subscribe(response => this.handleSuccessfulResponse(response));
 
   };
@@ -36,22 +38,28 @@ export class RequestformComponent implements OnInit {
   handleSuccessfulResponse(response) {
 
     this.reqForUser = response;
-    console.log(this.ub)
-    this.ub.rqstNames.push(this.reqForUser.name);
-    this.sService.findSPByName(this.reqForUser.spName).subscribe(response => this.handleSuccessfulResponseSP(response));
+    this.uService.addRequesttoUB(this.ub.username,this.reqForUser.name).subscribe(response=>this.handleSuccessForAddingRequestToUB(response));
+    this.sService.addRequesttoSP(this.spName, this.reqForUser.name).subscribe(response => this.handleSuccessForAddingRequestToSP(response));
 
   }
 
-  handleSuccessfulResponseSP(response) {
-    this.sp = response;
-    this.sService.addRequesttoSP(this.sp.username, this.reqForUser.name).subscribe(response => this.todisplaysucess(response));
-  }
 
-  handleFindingUser(response) {
+  handleSuccessFindingUB(response) {
+    console.log(response)
     this.ub = response;
+    console.log(this.ub)
   }
 
-  todisplaysucess(response) {
+  handleSuccessFindingSP(response){
+    this.sp = response;
+    console.log(this.sp)
+
+  }
+
+  handleSuccessForAddingRequestToUB(response){
+    console.log("Request added to the User Buyer");
+  }
+  handleSuccessForAddingRequestToSP(response) {
     console.log(response)
     console.log("request added to the service provider");
   }

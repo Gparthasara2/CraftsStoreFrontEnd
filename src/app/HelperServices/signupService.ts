@@ -12,7 +12,9 @@ export class ServiceProvider {
         public companyName: string,
         public password: string,
         public rqstNames: string[] = [],
-        public svcNames:string[] = []
+        public svcNames:string[] = [],
+        public acceptedRqsts:string[]= [],
+        public orders:string[]=[]
     ) { }
 }
 
@@ -31,6 +33,9 @@ export class SignUpService {
     //     return this.httpClient.delete<ServiceProvider>("http://localhost:8001/ServiceProviders" )
     // }
 
+    public findAllSPs() {
+        return this.httpClient.get<ServiceProvider>("http://localhost:8001/ServiceProviders/");
+    }
     public findSPByName(name: string) {
         return this.httpClient.get<ServiceProvider>("http://localhost:8001/ServiceProviders/username/" + name);
     }
@@ -39,10 +44,26 @@ export class SignUpService {
     }
 
     public addRequesttoSP(username: string, rqstName: string) {
-        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/rqstName/" + rqstName + "/" + username,{});
+        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/rqstName/addRequest/" + rqstName + "/" + username,{});
+    }
+
+    public removeRequestFromSP(username: string, rqstName: string) {
+        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/rqstName/removeRequest/" + rqstName + "/" + username,{});
+    }
+
+    public addAcceptedRequesttoSP(username: string, rqstName: string) {
+        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/rqstName/addAcceptedRequest/" + rqstName + "/" + username,{});
+    }
+
+    public removeAcceptedRequesttoSP(username: string, rqstName: string) {
+        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/rqstName/removeAcceptedRequest/" + rqstName + "/" + username,{});
     }
 
     public addServicetoSP(username: string, svcName: string) {
         return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/svcName/" + svcName + "/" + username,{});
+    }
+
+    public addOrderToSP(username:string, orderName:string){
+        return this.httpClient.put<ServiceProvider>("http://localhost:8001/ServiceProviders/username/orderName/addOrder/" + orderName + "/" + username,{});
     }
 }

@@ -18,6 +18,11 @@ import { OrderserviceComponent } from './orderservice/orderservice.component';
 import { SigninSPComponent } from './signin-sp/signin-sp.component';
 import { SigninUBComponent } from './signin-ub/signin-ub.component';
 import { RequestServiceUserComponent } from './request-service-user/request-service-user.component';
+import { RequestGlobalComponent } from './request-global/request-global.component';
+import { ViewacceptedComponent } from './viewaccepted/viewaccepted.component';
+import { ViewAcceptedRqstsUBComponent } from './view-accepted-rqsts-ub/view-accepted-rqsts-ub.component';
+import { ViewUserOrdersComponent } from './view-user-orders/view-user-orders.component';
+import { ViewSPOrdersComponent } from './view-sporders/view-sporders.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { RequestServiceUserComponent } from './request-service-user/request-serv
     OrderserviceComponent,
     SigninSPComponent,
     SigninUBComponent,
-    RequestServiceUserComponent
+    RequestServiceUserComponent,
+    RequestGlobalComponent,
+    ViewacceptedComponent,
+    ViewAcceptedRqstsUBComponent,
+    ViewUserOrdersComponent,
+    ViewSPOrdersComponent
   ],
   imports: [
     BrowserModule,

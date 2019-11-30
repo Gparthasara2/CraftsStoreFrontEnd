@@ -9,6 +9,7 @@ export class RequestModel {
         public category: string,
         public quantity: string,
         public desc: string,
+        public price:string,
         public spName: string,
         public bName: string,
     ) { }

@@ -7,11 +7,15 @@ import { ServicesComponent} from './services/services.component';
 import { SpformComponent } from './spform/spform.component';
 import { RequestformComponent } from './requestform/requestform.component';
 import { RequestserviceComponent } from './requestservice/requestservice.component';
-import { OrderformComponent } from './orderform/orderform.component';
-import { OrderserviceComponent } from './orderservice/orderservice.component';
+
 import {SigninUBComponent} from './signin-ub/signin-ub.component';
 import { SigninSPComponent} from './signin-sp/signin-sp.component';
 import { RequestServiceUserComponent} from './request-service-user/request-service-user.component'
+import { RequestGlobalComponent } from './request-global/request-global.component';
+import { ViewacceptedComponent } from './viewaccepted/viewaccepted.component';
+import { ViewAcceptedRqstsUBComponent } from './view-accepted-rqsts-ub/view-accepted-rqsts-ub.component';
+import { ViewUserOrdersComponent } from './view-user-orders/view-user-orders.component';
+import { ViewSPOrdersComponent } from './view-sporders/view-sporders.component';
 
 
 
@@ -22,13 +26,17 @@ const routes: Routes = [
   {path:'signup2',component:Signup2Component},
   {path:'services/:mail',component:ServicesComponent},
   {path:'spform',component:SpformComponent},
-  {path:'requestform/:mail',component:RequestformComponent},
+  {path:'requestform/:mail/:spName',component:RequestformComponent},
   {path:'requestservice/:mail',component:RequestserviceComponent},
-  {path:'orderform',component:OrderformComponent},
-  {path:'orderservice',component:OrderserviceComponent},
+
   {path:'signinUB',component:SigninUBComponent},
   {path:'signinSP',component:SigninSPComponent},
-  {path:'requestForUser/:mail',component:RequestServiceUserComponent}
+  {path:'requestForUser/:mail',component:RequestServiceUserComponent},
+  {path:'requestGlobal/:mail',component:RequestGlobalComponent},
+  {path:'viewAcceptedRequests/:mail',component:ViewacceptedComponent},
+  {path:'UserAcceptedRequests/:mail',component:ViewAcceptedRqstsUBComponent},
+  {path:'viewUserOrders/:mail',component:ViewUserOrdersComponent},
+  {path:'viewSPOrders/:mail',component:ViewSPOrdersComponent}
 
 ];
 

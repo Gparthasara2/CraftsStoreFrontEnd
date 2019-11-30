@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderserviceComponent } from './orderservice.component';
+import { RequestGlobalComponent } from './request-global.component';
 
-describe('OrderserviceComponent', () => {
-  let component: OrderserviceComponent;
-  let fixture: ComponentFixture<OrderserviceComponent>;
+describe('RequestGlobalComponent', () => {
+  let component: RequestGlobalComponent;
+  let fixture: ComponentFixture<RequestGlobalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderserviceComponent ]
+      declarations: [ RequestGlobalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderserviceComponent);
+    fixture = TestBed.createComponent(RequestGlobalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

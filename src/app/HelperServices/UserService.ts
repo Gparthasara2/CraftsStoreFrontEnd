@@ -9,7 +9,9 @@ export class UserBuyer {
         public lastName: string,
         public emailId: string,
         public password: string,
-        public rqstNames: string[] = []
+        public rqstNames: string[] = [],
+        public acceptedRqsts:string[] = [],
+        public orders:string[] = []
     ) { }
 }
 
@@ -32,10 +34,27 @@ export class UserService {
         return this.httpClient.get<UserBuyer>("http://localhost:8001/BuyerUsers/username/" + name);
     }
     public findUserByEmail(email:string) {
-        return this.httpClient.get<UserBuyer>("http://localhost:8001/BuyerUsers/email" + "/" + email);
+        return this.httpClient.get<UserBuyer>("http://localhost:8001/BuyerUsers/email/" + email);
     }
 
-    public addRequesttoSP(username: string, rqstName: string) {
-        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/" + rqstName + "/" + username,{});
+    public removeRequestFromUB(username: string, rqstName: string) {
+        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/rqstName/removeRequest/" + rqstName + "/" + username,{});
     }
+
+    public addRequesttoUB(username: string, rqstName: string) {
+        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/rqstName/addRequest" + rqstName + "/" + username,{});
+    }
+
+    public addAcceptedRequesttoUB(username: string, rqstName: string) {
+        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/rqstName/addAcceptedRequest" + rqstName + "/" + username,{});
+    }
+
+    public removeAcceptedRequestfromUB(username: string, rqstName: string) {
+        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/rqstName/removeAcceptedRequest" + rqstName + "/" + username,{});
+    }
+
+    public addOrderToUB(username:string, orderName:string){
+        return this.httpClient.put<UserBuyer>("http://localhost:8001/BuyerUsers/username/orderName/addOrder/" + orderName + "/" + username,{});
+    }
+    
 }

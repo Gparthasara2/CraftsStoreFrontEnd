@@ -78,12 +78,28 @@
 
             <li class="list-group-item sidebar-separator menu-collapsed"></li>
 
+            <a [routerLink]="['/viewAcceptedRequests',sp.emailId]" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question fa-fw mr-3"></span>
+                    <span class="menu-collapsed">View Accepted Requests</span>
+                </div>
+            </a>
+
+            <a [routerLink]="['/viewSPOrders',sp.emailId]" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question fa-fw mr-3"></span>
+                    <span class="menu-collapsed">View My Orders</span>
+                </div>
+            </a>
+
             <a [routerLink]="['/spform',sp.username]" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-question fa-fw mr-3"></span>
                     <span class="menu-collapsed">Add a Service</span>
                 </div>
             </a>
+
+
 
         </ul>
     </div>
@@ -103,7 +119,9 @@
                             <p class="card-text">{{r.desc}}</p>
                             <p class="card-text">{{r.spName}}</p>
                             <p class="card-text">{{r.bName}}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a type="submit" click="acceptRequest(r)" class="btn btn-primary">Accept Request</a>
+                            <a type="submit" click="removeRequest(r)" class="btn btn-primary">Remove Request</a>
+
                         </div>
                     </div>
                 </div>

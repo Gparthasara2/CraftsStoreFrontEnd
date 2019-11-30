@@ -29,7 +29,7 @@ export class ServicesComponent implements OnInit {
 
   handlesuccessfulResponseMail(response){
     this.ub = response;
-    
+    console.log(this.ub);
   }
 
 }

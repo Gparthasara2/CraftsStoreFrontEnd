@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
     <a class="navbar-brand" href="#">
         <img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         <span class="menu-collapsed">Brand</span>
@@ -73,62 +73,38 @@
                 <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
                     <span class="menu-collapsed">Password</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Requests</span>
-                </a>
+
             </div>
 
             <li class="list-group-item sidebar-separator menu-collapsed"></li>
 
-            <a [routerLink]="['/requestForUser',ub.emailId]" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3"></span>
-                    <span class="menu-collapsed">View My Requests</span>
-                </div>
-            </a>
-            <a [routerLink]="['/requestGlobal',ub.emailId]" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Make a new Request</span>
-                </div>
-            </a>
-            <a [routerLink]="['/UserAcceptedRequests',ub.emailId]" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3"></span>
-                    <span class="menu-collapsed">View Accepted Requests</span>
-                </div>
-            </a>
-            <a [routerLink]="['/viewUserOrders',ub.emailId]" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3"></span>
-                    <span class="menu-collapsed">View Orders</span>
-                </div>
-            </a>
-            <a href="#" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Help</span>
-                </div>
-            </a>
+
 
         </ul>
     </div>
 
     <!-- MAIN -->
     <div class="content">
-        <div *ngIf="services != null">
-            <div class="col-md-6" *ngFor="let s of services">
+        <div *ngIf="requests != null">
+            <div *ngFor="let ar of acceptedRequests">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img class="card-img-top" src="src\assets\images\books.jpg" style="height:20rem;" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ar.name}}</h5>
+                            <p class="card-text">{{ar.expectedDate}}</p>
+                            <p class="card-text">{{ar.category}}</p>
+                            <p class="card-text">{{ar.quantity}}</p>
+                            <p class="card-text">{{ar.desc}}</p>
+                            <p class="card-text">{{ar.spName}}</p>
+                            <p class="card-text">{{ar.bName}}</p>
+                            <!-- Will create an order -->
+                            <a href="#" class="btn btn-primary" (click)="CreateOrder(ar)">Accept</a>
 
-                <div class="card">
-                    <img class="card-img-top" src="src\assets\images\books.jpg" style="height:20rem;" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{s.svcName}}</h5>
-                        <p class="card-text">{{s.category}}</p>
-                        <p class="card-text">{{s.desc}}</p>
-                        <a [routerLink]="['/requestform',ub.emailId,s.spName]" class="btn btn-primary">Make a new request</a>
+                            <a href="#" class="btn btn-danger" (click)="removeRequest(ar)">Reject</a>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

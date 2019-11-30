@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpFormService, ServiceModel } from '../HelperServices/spformService'
 import { ServiceProvider, SignUpService } from '../HelperServices/signupService';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-spform',
@@ -10,36 +11,34 @@ import { ServiceProvider, SignUpService } from '../HelperServices/signupService'
 export class SpformComponent implements OnInit {
   s: ServiceModel = new ServiceModel("", "", "", "", "");
   sp: ServiceProvider = new ServiceProvider("","","","","","","",[]);
+  mail:string=""
 
-   constructor(private spformservice: SpFormService, private sService: SpFormService,private signupService:SignUpService) { }
+   constructor(private spformservice: SpFormService, private sService: SpFormService,private signupService:SignUpService,private route:ActivatedRoute) { }
 
 
 
   ngOnInit() {
+    this.mail = this.route.snapshot.paramMap.get("mail");
+    this.signupService.findSPByEmail(this.mail).subscribe(response=>this.FoundServiceProvider(response));
+  }
+
+  FoundServiceProvider(response){
+    this.sp = response;
   }
 
   createService(): void {
-    console.log(this.s)
+    this.s.spName = this.sp.username;
     this.spformservice.createService(this.s).subscribe(response=>this.handleSuccessfulResponse(response) );
   };
 
   handleSuccessfulResponse(response) {
-    
-    console.log("printing the created service")
-    console.log(this.s)
-    this.signupService.findSPByName(this.s.spName).subscribe(response => this.handleSuccessfulResponseSP(response));
-
+    this.s = response;
+    this.signupService.addServicetoSP(this.s.spName,this.s.svcName).subscribe(response=>this.AddedServiceToTheSP(response));
   }
 
-  handleSuccessfulResponseSP(response) {
-    this.sp = response;
-    console.log("printing the found service provider of the service")
-    console.log(this.sp);
-    
-    this.signupService.addServicetoSP(this.sp.username, this.s.svcName).subscribe(response => this.todisplaysucess(response));
+  AddedServiceToTheSP(response){
+    this.s = response;
   }
 
-  todisplaysucess(response) {
-    console.log("request added to the service provider");
-  }
+  
 }
