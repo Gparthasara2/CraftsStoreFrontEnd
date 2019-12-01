@@ -13,13 +13,11 @@ import { SpformComponent } from './spform/spform.component';
 
 import { RequestformComponent } from './requestform/requestform.component';
 import { RequestserviceComponent } from './requestservice/requestservice.component';
-import { OrderformComponent } from './orderform/orderform.component';
-import { OrderserviceComponent } from './orderservice/orderservice.component';
 import { SigninSPComponent } from './signin-sp/signin-sp.component';
 import { SigninUBComponent } from './signin-ub/signin-ub.component';
 import { RequestServiceUserComponent } from './request-service-user/request-service-user.component';
 import { RequestGlobalComponent } from './request-global/request-global.component';
-import { ViewacceptedComponent } from './viewaccepted/viewaccepted.component';
+import { ViewacceptedComponent } from './view-accepted-rqsts-sp/viewaccepted.component';
 import { ViewAcceptedRqstsUBComponent } from './view-accepted-rqsts-ub/view-accepted-rqsts-ub.component';
 import { ViewUserOrdersComponent } from './view-user-orders/view-user-orders.component';
 import { ViewSPOrdersComponent } from './view-sporders/view-sporders.component';
@@ -35,8 +33,6 @@ import { ViewSPOrdersComponent } from './view-sporders/view-sporders.component';
     
     RequestformComponent,
     RequestserviceComponent,
-    OrderformComponent,
-    OrderserviceComponent,
     SigninSPComponent,
     SigninUBComponent,
     RequestServiceUserComponent,

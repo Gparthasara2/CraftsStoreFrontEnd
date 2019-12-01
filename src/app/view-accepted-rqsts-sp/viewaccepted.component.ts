@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestModel, RequestService } from '../HelperServices/requestService';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceProvider, SignUpService } from '../HelperServices/signupService'
+import { ServiceProvider, SignUpService } from '../HelperServices/SPService';
 import { UserService, UserBuyer } from '../HelperServices/UserService';
 import { filter } from 'minimatch';
 

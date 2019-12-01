@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserBuyer, UserService } from '../HelperServices/UserService';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceProvider, SignUpService } from '../HelperServices/signupService';
+import { ServiceProvider, SignUpService } from '../HelperServices/SPService';
 import { RequestService, RequestModel } from '../HelperServices/requestService';
 
 @Component({
@@ -11,8 +11,8 @@ import { RequestService, RequestModel } from '../HelperServices/requestService';
 })
 export class RequestGlobalComponent implements OnInit {
 
-  ub: UserBuyer = new UserBuyer("", "", "", "", "", []);
-  rqst: RequestModel = new RequestModel("", "", "", "", "", "");
+  ub: UserBuyer = new UserBuyer("","", "", "", "", "", []);
+  rqst: RequestModel = new RequestModel("","", "", "", "", "", "","");
 
   sps: ServiceProvider[] = [];
   mail: string = "";

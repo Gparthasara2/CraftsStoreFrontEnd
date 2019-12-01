@@ -11,7 +11,7 @@ import { RequestModel, RequestService } from '../HelperServices/requestService';
 export class RequestServiceUserComponent implements OnInit {
 
   mail:string="";
-  ub: UserBuyer = new UserBuyer("", "", "", "", "",[]);
+  ub: UserBuyer = new UserBuyer("", "", "", "", "","",[]);
   requests : RequestModel[] = [];
   constructor(private route: ActivatedRoute,private uService:UserService,private rService:RequestService) { }
 

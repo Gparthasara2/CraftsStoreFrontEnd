@@ -4,7 +4,7 @@ import { UserService, UserBuyer } from '../HelperServices/UserService';
 import { RequestService, RequestModel } from '../HelperServices/requestService';
 import { TouchSequence } from 'selenium-webdriver';
 import { OrderModel, OrderService } from '../HelperServices/orderService';
-import { SignUpService } from '../HelperServices/signupService';
+import { SignUpService } from '../HelperServices/SPService';
 
 @Component({
   selector: 'app-view-accepted-rqsts-ub',
@@ -14,7 +14,7 @@ import { SignUpService } from '../HelperServices/signupService';
 export class ViewAcceptedRqstsUBComponent implements OnInit {
 
   mail:string=""
-  ub: UserBuyer = new UserBuyer("", "", "", "", "",[]);
+  ub: UserBuyer = new UserBuyer("","", "", "", "", "",[]);
   acceptedRequests : RequestModel[] = [];
   order:OrderModel = new OrderModel("","","","","","");
 

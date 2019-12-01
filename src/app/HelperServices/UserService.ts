@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class UserBuyer {
     constructor(
+        public userID:string,
         public username: string,
         public firstName: string,
         public lastName: string,

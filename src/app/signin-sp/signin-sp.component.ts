@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceProvider, SignUpService } from '../HelperServices/signupService';
+import { ServiceProvider, SignUpService } from '../HelperServices/SPService';
 import { Router } from '@angular/router';
 
 @Component({

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SigninUBComponent implements OnInit {
   mail: string = ""
   password: string = ""
-  ub: UserBuyer = new UserBuyer("", "", "", "", "",[]);
+  ub: UserBuyer = new UserBuyer("", "", "", "", "","",[]);
   errorMessage: string = "";
   isUserError: boolean = false;
   isPasswordError: boolean = false;

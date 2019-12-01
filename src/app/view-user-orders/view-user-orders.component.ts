@@ -11,7 +11,7 @@ import { OrderService, OrderModel } from '../HelperServices/orderService';
 export class ViewUserOrdersComponent implements OnInit {
 
   mail:string=""
-  ub: UserBuyer = new UserBuyer("","","","","",[],[],[])
+  ub: UserBuyer = new UserBuyer("","","","","","",[],[],[])
   UserOrders : OrderModel[] = [];
   constructor(private route:ActivatedRoute,private uService:UserService,private oService:OrderService) { }
 

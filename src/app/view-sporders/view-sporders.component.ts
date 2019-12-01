@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceProvider, SignUpService } from '../HelperServices/signupService';
+import { ServiceProvider, SignUpService } from '../HelperServices/SPService';
 import { OrderModel, OrderService } from '../HelperServices/orderService';
 import { ActivatedRoute } from '@angular/router';
 

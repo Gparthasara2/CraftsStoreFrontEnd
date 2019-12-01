@@ -8,13 +8,14 @@ import { UserService, UserBuyer} from '../HelperServices/UserService'
 })
 export class Signup2Component implements OnInit {
 
-  ub: UserBuyer = new UserBuyer("","","","","",[]);
+  ub: UserBuyer = new UserBuyer("","","","","","",[]);
   constructor(private userservice: UserService) { }
 
   ngOnInit() {
   }
 
   createUserBuyer():void{
+    console.log("User created at the signup2 page: ")
     console.log(this.ub)
     this.userservice.createUserBuyer(this.ub).subscribe(data=>{alert("User Buyer is Created!!");});
   };

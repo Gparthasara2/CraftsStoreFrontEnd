@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ServiceModel, SpFormService} from '../HelperServices/spformService';
+import {ServiceModel, SpFormService} from '../HelperServices/serviceService';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService, UserBuyer } from '../HelperServices/UserService';
 
@@ -13,7 +13,7 @@ export class ServicesComponent implements OnInit {
 
   mail:string=""
   services: ServiceModel[]
-  ub: UserBuyer = new UserBuyer("", "", "", "", "",[]);
+  ub: UserBuyer = new UserBuyer("","", "", "", "", "",[]);
 
   constructor(private spService: SpFormService,private route: ActivatedRoute,private uService:UserService) { }
 
@@ -29,6 +29,7 @@ export class ServicesComponent implements OnInit {
 
   handlesuccessfulResponseMail(response){
     this.ub = response;
+    console.log("User found at the opening of the services page of the user")
     console.log(this.ub);
   }
 

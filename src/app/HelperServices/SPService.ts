@@ -11,8 +11,8 @@ export class ServiceProvider {
         public emailId: string,
         public companyName: string,
         public password: string,
-        public rqstNames: string[] = [],
-        public svcNames:string[] = [],
+        public rqsts: string[] = [],
+        public svcs:string[] = [],
         public acceptedRqsts:string[]= [],
         public orders:string[]=[]
     ) { }
@@ -40,7 +40,7 @@ export class SignUpService {
         return this.httpClient.get<ServiceProvider>("http://localhost:8001/ServiceProviders/username/" + name);
     }
     public findSPByEmail(email) {
-        return this.httpClient.get<ServiceProvider>("http://localhost:8001/ServiceProviders/email" + "/" + email);
+        return this.httpClient.get<ServiceProvider>("http://localhost:8001/ServiceProviders/email/" + email);
     }
 
     public addRequesttoSP(username: string, rqstName: string) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestModel, RequestService } from '../HelperServices/requestService';
 import { ActivatedRoute } from '@angular/router';
-import { ServiceProvider, SignUpService } from '../HelperServices/signupService'
+import { ServiceProvider, SignUpService } from '../HelperServices/SPService'
 import { UserService, UserBuyer } from '../HelperServices/UserService';
 import { filter } from 'minimatch';
 
@@ -13,7 +13,7 @@ import { filter } from 'minimatch';
 export class RequestserviceComponent implements OnInit {
 
   requests: RequestModel[] = [];
-  sp: ServiceProvider;
+  sp: ServiceProvider = new ServiceProvider("","","","","","","");
   mail: string = ''
   ub: UserBuyer;
   constructor(private requestservice: RequestService, private sService: SignUpService, private uService: UserService, private route: ActivatedRoute) { }
@@ -24,8 +24,9 @@ export class RequestserviceComponent implements OnInit {
   }
 
   handlesuccessfulResponse(response) {
+
     this.sp = response;
-    console.error('printing sp ');
+    console.log("Service Provider found on opening the requestservice page:")
     console.log(this.sp);
 
     this.addRequests();
@@ -33,7 +34,7 @@ export class RequestserviceComponent implements OnInit {
 
   addRequests() {
 
-    this.sp.rqstNames.forEach(element => {
+    this.sp.rqsts.forEach(element => {
       this.requestservice.findRequest(element).subscribe(response => this.handlesuccessfulResponseRequest(response));
     })
 
@@ -49,14 +50,14 @@ export class RequestserviceComponent implements OnInit {
   }
 
   removeRequest(r: RequestModel) {
-    this.sp.rqstNames = this.sp.rqstNames.filter(name => name !== r.name);
+    this.sp.rqsts = this.sp.rqsts.filter(name => name !== r.name);
     this.sService.removeRequestFromSP(this.sp.username, r.name).subscribe(response => this.handleRemove(response));
     // this.uService.findUserByName(r.bName).subscribe(response=> this.handleUser(response,r));
   }
 
   acceptRequest(r: RequestModel) {
     this.sp.acceptedRqsts.push(r.name);
-    this.sp.rqstNames = this.sp.rqstNames.filter(name => name !== r.name)
+    this.sp.rqsts = this.sp.rqsts.filter(name => name !== r.name)
     this.sService.removeRequestFromSP(this.sp.username, r.name).subscribe(response => this.handleRemoveRequestSP(response));
     this.sService.addAcceptedRequesttoSP(this.sp.username, r.name).subscribe(response => this.handleSuccessAddAcceptedRequestForSP(response));
     this.uService.findUserByName(r.bName).subscribe(response => this.handleAcceptRequestForBuyer(response, r));

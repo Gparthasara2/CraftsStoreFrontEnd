@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class RequestModel {
     constructor(
+        public id: string,
         public name: string,
         // public expectedDate: Date,
         public category: string,
